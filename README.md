@@ -8,17 +8,16 @@ Inference and visualization of the genome ancestry mosaics leveraging the strati
 4. bayesian smoothing
 5. mosaic graph visualization
 
-+ Run pipeline: each of the main function could be evoked by the **script.sh** bash script.
++ Run pipeline: the main functions could be evoked by the **pipeline.sh** bash script.
 
 ## Applications:
 Applications of the IntroBlocker algorithm on the whole-genome resequencing dataset containing 387 interploidy wheat samples and further analysis built upon the inference could be found in the github repo [CAU-MosaicWheat](https://github.com/wangzihell/CAU-MosaicWheat).
 
 ## Demonstrations
-A small demo dataset, corresponding instructions to run on data and expected output were provided in in directory Demo_data. 
+A small demo dataset was provided in in directory Demo_data. 
 
 ## Documentation:
-The documentation of IntroBlocker could be accessed at [readthedocs](https://introblocker.readthedocs.io/en/latest/).  
-Brief descrptions of each sub-uncion could also e found in the READMD file in each folder and in the comments of scripts.  
+The documentation of IntroBlocker could be accessed at [the wiki page](https://github.com/wangzihell/IntroBlocker/wiki).  
 
 ## Prerequisites & version tested:
 + Linux system with a 64 bit CPU
@@ -33,7 +32,6 @@ Brief descrptions of each sub-uncion could also e found in the READMD file in ea
 + R v3.6
 + R packages:
   + optparse
-  + R.utils
   + dendextend
 
 ## Installation & required time

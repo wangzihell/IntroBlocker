@@ -1,0 +1,11 @@
+taxa	group
+S1	WildEmmer
+S2	WildEmmer
+S3	WildEmmer
+S4	Durum
+S5	Durum
+S6	Durum
+S7	HexaploidWheat
+S8	HexaploidWheat
+S9	HexaploidWheat
+S10	HexaploidWheat

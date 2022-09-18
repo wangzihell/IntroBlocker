@@ -1,10 +1,8 @@
 #!/bib/bash
-set -euxo pipefail
 
-WD=/data2/rawdata2/tetraintro/
+source ../parameters.sh
 
-# plot the mosai graph for each chromosomes
-for CHR in chr1A chr1B chr2A chr2B chr3A chr3B chr4A chr4B chr5A chr5B chr6A chr6B chr7A chr7B;do
-  plotH=$(gawk 'NR==1{print (NF-3)/5}' ${CHR}.grp)
-  Rscript ${WD}/bin/draw_haplo_block.R -H ${plotH} -m /data2/rawdata2/sample_metadata/tetra_intro/metadata_201221.txt -i ${CHR}.contri.grp -o ${CHR}.pdf -s ${CHR}.contri.fi -n 20 -c ${WD}/bin/20_distinct_colors2.txt
-done
+while read CHR;do
+  plotH=$(gawk 'NR==1{print (NF-3)/5}' ../04-Bayesian-smoothing/${CHR}.smoothed.grp)
+  Rscript ${script_dir}/5.Mosaic_graph_visualization/draw_AHG.R -b ${bin_size} -H ${plotH} -i ../04-Bayesian-smoothing/${CHR}.smoothed.grp -o ${CHR}.pdf -s ../03-Ancestry-inference/${CHR}.fi -n 20 -c ${script_dir}/5.Mosaic_graph_visualization/20_distinct_colors.txt
+done < ../chr_list.txt

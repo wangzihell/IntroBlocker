@@ -1,40 +1,38 @@
 #!/usr/bin/env python
+
 import sys
 import copy
+from optparse import OptionParser
 
-if len(sys.argv) < 2:
-	chrom = "chr1A"
-else:
-	chrom = sys.argv[1]
-
-if len(sys.argv) < 3:
-	grp_data_folder = "/data2/rawdata2/tetraintro/210109/data"
-else:
-	grp_data_folder = sys.argv[2]
-
-if len(sys.argv) < 4:
-	dist_data_folder = "/data2/rawdata2/tetraintro/210109/repr_dist_AABB"
-else:
-	dist_data_folder = sys.argv[3]
+usage = "Input format:\n" \
+		"   chr\tstart\tend\tsample1\tsample2\tsample3\n" \
+		"   chr1A\t1\t1000000\t0\t0\t1\n" 
+#
+parser = OptionParser(usage)
+parser.add_option("-c", dest="chrom",
+				help="chromosome")
+parser.add_option("-d", dest="dist_data_folder",
+				help="the dist data directory")
+parser.add_option("-o", dest="dist_order_file",
+				help="taxa order of the dist file")
+parser.add_option("-g", dest="grp_file",
+				help="the grp file to smooth"),
+parser.add_option("-m", dest="ms_file",
+				help="the ms file corrspoding to the grp file"),		
+parser.add_option("-v", dest="vote_dis_threshold",
+				help="distance threshold to vote", default=600)
+parser.add_option("-r", dest="vote_range",
+				help="range of voting in bins (one side)", default=3)
+#
+(options, args) = parser.parse_args()
 	
-if len(sys.argv) < 5:
-	new_grp_output_folder = "/data3/user3/wangwx/projs/tetraintro/210109/"
-else:
-	new_grp_output_folder = sys.argv[4]
-	
-if len(sys.argv) < 6:
-	vote_dis_threshold = 593 # 593: 40alpha=beta    828: 2alpha=beta
-else:
-	vote_dis_threshold = int(sys.argv[5])
-	
-if len(sys.argv) < 7:
-	vote_range = "3"
-else:
-	vote_range = sys.argv[6]
-	
-grp_file = grp_data_folder + "/" + chrom + ".grp"
-ms_file = grp_data_folder + "/" + chrom + ".ms"
-dist_order_file = dist_data_folder + "/name.txt"
+chrom = options.chrom
+dist_data_folder = options.dist_data_folder
+dist_order_file = options.dist_order_file
+grp_file = options.grp_file
+ms_file = options.ms_file
+vote_dis_threshold = int(options.vote_dis_threshold)
+vote_range = int(options.vote_range)
 
 f = open(ms_file, 'r')
 ms_mat = f.readlines()
@@ -145,7 +143,7 @@ for i in range(len(grp_mat)):
 	new_grp_mat[i] = new_grp_line
 	
 # finished
-f = open(new_grp_output_folder + "/" + chrom + ".smoothed.grp", 'w')
+f = open(chrom + ".smoothed.grp", 'w')
 f.write("\t".join(sample_list) + "\n")
 f.writelines(new_grp_mat)
 f.close()

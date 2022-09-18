@@ -1,0 +1,6 @@
+total 12
+drwxr-xr-x 2 wangzh ofo   94 Sep 18 20:39 ./
+drwxr-xr-x 8 wangzh ofo  334 Sep 18 21:06 ../
+-rw-r--r-- 1 wangzh ofo  779 Sep 18 20:27 calculate_dist.sh
+-rw-r--r-- 1 wangzh ofo 1045 Sep 18 20:34 cnv_masker.sh
+-rw-r--r-- 1 wangzh ofo  270 Sep 18 17:57 prep_basic_file.sh
