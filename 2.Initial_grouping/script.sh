@@ -9,7 +9,7 @@ while read CHR;do
   # initial grouping using hiararchical clustering algorithm, removing CNV blocks
   for (( i=1;i<=${num_bin};i+=1 ));do
     gawk -vn=$i 'NR==n{print}' ../cnv_masker/${CHR}.CNVfilter.txt > ${CHR}_filter.tmp
-    Rscript ${script_dir}/2.Initial_grouping/do_cluster_average.R -i ../01-Binwise-genetic-distance/${CHR}.${i}.dist.txt -f ${CHR}_filter.tmp -o ${CHR}.${i}.label.txt
+    Rscript ${script_dir}/2.Initial_grouping/do_cluster_average.R -i ../01-Binwise-genetic-distance/${CHR}.${i}.dist.txt -t ${cluster_thr} -f ${CHR}_filter.tmp -o ${CHR}.${i}.label.txt
   done
   
   # format output files
