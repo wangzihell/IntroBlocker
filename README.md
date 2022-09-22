@@ -36,3 +36,6 @@ The documentation of IntroBlocker could be accessed at [the wiki page](https://g
 
 ## Installation & required time
 clone this git repository to your local computer, and no further installation & compilation time was needed.
+  
+## Citation
+Wang, Z., Wang, W., Xie, X., Wang, Y., Yang, Z., Peng, H., Xin, M., Yao, Y., Hu, Z., Liu, J., Su, Z., Xie, C., Li, B., Ni, Z., Sun, Q., and Guo, W. (2022). Dispersed emergence and protracted domestication of polyploid wheat uncovered by mosaic ancestral haploblock inference. Nature Communications 13: 3891.
