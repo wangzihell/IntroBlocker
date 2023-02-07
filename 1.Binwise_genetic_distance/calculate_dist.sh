@@ -21,7 +21,7 @@ while read CHR;do
         --out ${CHR}.${i}.rawdist > ${CHR}.${i}.log
   
     # convert allel count to distance
-    gawk -vbin_size=${bin_size} -vOFS="\t" '{for(i=1;i<=NF;i++){$i=int($i/bin_size/2)};print}' ${CHR}.${i}.rawdist.dist > ${CHR}.${i}.dist.txt
+    sed 's/NA/0/g' ${CHR}.${i}.rawdist.dist | gawk -vbin_size=${bin_size} -vOFS="\t" '{for(i=1;i<=NF;i++){$i=int($i/bin_size/2)};print}' > ${CHR}.${i}.dist.txt
   done
 
 done < ../chr_list.txt

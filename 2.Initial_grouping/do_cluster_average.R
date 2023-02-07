@@ -27,14 +27,22 @@ threshold <- as.numeric(arguments$threshold)
 DF1 <- read.table(infile)
 n <- ncol(DF1)
 filterfile <- as.numeric(read.table(filterfile))
-DF1 <- DF1[filterfile==1, filterfile==1]
-hc <- cutree(hclust(d = as.dist(DF1), method = "average"), h = threshold)
-tmp <- as.numeric(names(hc))
-for (i in 1:n){
-  if (!(i %in% tmp)){
-    hc <- append(hc, 0, after = i-1)
-    names(hc)[i]=i
+if (sum(filterfile)==0){
+  hc <- rep(-1, n)
+} else if (sum(filterfile)==1) {
+  hc <- rep(-1, n)
+  hc[which(filterfile==1)]=0
+} else {
+  DF1 <- DF1[filterfile==1, filterfile==1]
+  hc <- cutree(hclust(d = as.dist(DF1), method = "average"), h = threshold)
+  tmp <- as.numeric(names(hc))
+  for (i in 1:n){
+    if (!(i %in% tmp)){
+      hc <- append(hc, 0, after = i-1)
+      names(hc)[i]=i
+    }
   }
+  hc <- hc-1
 }
-hc <- hc-1
+
 write.table(hc, outfile, quote = F, col.names = F, row.names = F)
