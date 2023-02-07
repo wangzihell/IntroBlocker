@@ -35,4 +35,9 @@ taxa_order_file="/data2/rawdata2/demo/taxa_order.txt"
 # the mode of IntroBlocker (could be "un-supervised", "semi-supervised" and "supervised")
 mode="semi-supervised"
 
+# color palette used to draw mosaic graph
+color_palette_file="${script_dir}/5.Mosaic_graph_visualization/20_distinct_colors.txt"
+
+# number of colors shown in mosaic graph (AHG types more than this number will be shown as grey)
+num_color=20
 ############################### end of resetting parameters ##################################################
