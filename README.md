@@ -3,6 +3,7 @@ Inference and visualization of the genome ancestry mosaics leveraging the strati
 
 ## Key functionalities:
 1. binwise genetic distance
+1.2 genetic distance threshold estimation
 2. initial grouping
 3. ancestry inferenc
 4. bayesian smoothing
